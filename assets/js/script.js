@@ -44,3 +44,28 @@ const activeHeader = function () {
 };
 
 addEventOnElement(window, 'scroll', activeHeader);
+
+// * toggle active on add to fav
+const addToFavBtns = document.querySelectorAll('[data-add-to-fav]');
+
+const toggleActive = function () {
+  this.classList.toggle('active');
+};
+
+addEventOnElement(addToFavBtns, 'click', toggleActive);
+
+// * scroll revreal effect
+const sections = document.querySelectorAll('[data-section]');
+const scrollReveal = function () {
+  for (let i = 0; i < sections.length; i++) {
+    if (sections[i].getBoundingClientRect().top < window.innerHeight / 1.5) {
+      sections[i].classList.add('active');
+    } else {
+      sections[i].classList.remove('active');
+    }
+  }
+};
+
+scrollReveal();
+
+addEventOnElement(window, 'scroll', scrollReveal);
